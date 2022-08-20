@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Poppins;
+        }
+        #movieData{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 24px;
+            padding: 20px;
+            margin: 20px;
+        }
+        #movieData  img{
+            width: 230px;
+            height: 300px;   
+        }
+        .article{
+            box-shadow: 0px 10px 30px 10px rgba(51, 51, 51, 0.198);
+            padding: 20px;   
+            text-align: center;
+        }
+        .rating{
+           background-color: rgba(0, 0, 0, 0.075);
+           padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>Silver Flick</h1>
+            <div class="searchbox">
+                <input type="text" placeholder="Search">
+                <img src="icons/icons8-search.svg" alt="">
+            </div>
+            <button>Home</button>
+            <button><a href="./login.html" target="_blank">Login</a></button>
+            <button><a href="./signup.html" target="_blank">Sign Up</a></button>
+        </div>
+        <div class="movies">
+            <div id="movieData"></div>
+        </div>
+    </div>
+    <script>
+        // let carasolImage = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI_ZDs2HlwAW_rtO10f4k-KfKEnr9tLO0n-w&usqp=CAU", "https://occ-0-3759-3646.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABYYhqK1QwowyCALJ6k_HPoB03ZFYuhl3oyW-_gMEueYFKG908yzAOi1teGIOy2yRO81xGXMlH5tMaZoS2brX2uhPfhU.webp?r=c7a", "https://occ-0-3759-3646.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABRz7fKFHlN0B1lnPfIt4CFicV44h2QKgTDSWpdhb1iTLg3MeeSIpRxZp36WMAVRuVP1GFmneq57QGB7d0YJAhPa3AUo.webp?r=63d", "https://occ-0-3759-3646.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABQD0C56iZWH0FN6ddWFWPM1dywCE5CvITEGIaR0u55AnvTrvAGy7wtXmdM3XdWSHaeUn5Yl97CPUce7uG8A-j52V7Kg.webp?r=875"];
+
+        let movieObj = [
+
+            {
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZUx1hUqwj5KSnnCcmLMjmzDPzv6pN_BfWjA&usqp=CAU",
+                name: "Avatar",
+                releaseDate: "Release - 2009",
+                rating: "1✨",
+            },
+            {
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjCdXBlIr1QupbgMQH5KqE3QgN6geB6DsIug&usqp=CAU",
+                name: "Avengers: Endgame",
+                releaseDate: "Release - 2019",
+                rating: "2✨",
+            },
+            {
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEM2dA7R5ySqnRY_s7_nI3DKOiag0M6pz5XQ&usqp=CAU",
+                name: "Titanic",
+                releaseDate: "Release - 1997",
+                rating: "3✨",
+            },
+            {
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGeaKi96nqA6rloY-6uxEnnsd0fzCUj1J1w&usqp=CAU",
+                name: "Avengers: Infinity War",
+                releaseDate: "Release - 2018",
+                rating: "4✨",
+            },
+            {
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6GJ08TQfTHCaXFqtiaUM_8Fuaz2YU67kZpw&usqp=CAU",
+                name: "Spider-Man: No Way Home",
+                releaseDate: "Release - 2021",
+                rating: "5✨",
+            },
+            {
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcNdj3Fz1dSmzmbsp4iDmLZxOeyuWyxiQNAw&usqp=CAU",
+                name: "Jurassic World",
+                releaseDate: "Release - 2015",
+                rating: "6✨",
+            },
+            {
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBROwyBIidxK_glVMxIijCsJW0GQjm6jr93Q&usqp=CAU",
+                name: "Beauty and the Beast",
+                releaseDate: "Release - 2017",
+                rating: "7✨",
+            },
+            {
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCF5Z36eF5TBhmX1W_W7a4MeoJKMettl-cdA&usqp=CAU",
+                name: "Iron Man 3",
+                releaseDate: "Release - 2013",
+                rating: "8✨",
+            },
+            {
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUXQk23SydrTP8eNXBYuAmKkXMCBJvgNAETg&usqp=CAU",
+                name: "Minions",
+                releaseDate: "Release - 2015",
+                rating: "9✨",
+            }
+        ]
+        let jasonMovies = JSON.stringify(movieObj);
+        console.log(jasonMovies);
+
+        localStorage.setItem("myFavMovie", jasonMovies);
+
+        let myFavMovie = localStorage.getItem("myFavMovie");
+
+        myFavMovie = JSON.parse(myFavMovie);
+        console.log(myFavMovie)
+
+        function showMovies() {
+            let dataDiv = document.getElementById("movieData");
+            myFavMovie.forEach(function (movie) {
+                console.log(movie.name)
+                let div = document.createElement("div");
+
+
+                let p_name = document.createElement("p");
+                p_name.innerText = movie.name;
+
+
+                let release = document.createElement("p");
+                release.innerText = movie.releaseDate;
+
+                let image = document.createElement("img");
+                image.src = movie.image;
+
+                let rating = document.createElement("p");
+                rating.innerText = movie.rating;
+                rating.setAttribute("class", "rating")
+
+                div.append(image, p_name, release, rating);
+                div.setAttribute("class", "article")
+                dataDiv.append(div)
+            });
+        }
+        showMovies();
+
+    </script>
+</body>
+
+</html>

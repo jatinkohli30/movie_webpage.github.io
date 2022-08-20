@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <title>Sign up</title>
+    <style>
+        * {
+            margin: 0%;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body {
+            box-sizing: border-box;
+            font-family: Poppins;
+        }
+
+        form {
+            width: 470px;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: rgba(0, 0, 0, 0);
+            box-shadow: 0px 10px 30px 10px rgb(51 51 51 / 10%);
+        }
+
+        form>div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        form>div>input {
+            width: 300px;
+            height: 30px;
+            font-size: 17px;
+            padding: 10px;
+            border-radius: 12px;
+            color: rgba(0, 0, 0, 0.883);
+        }
+
+        .btn {
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+        }
+
+        .btn>button {
+            background-color: cornflowerblue;
+            color: cornsilk;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Silver Flick</h1>
+        <div class="searchbox">
+            <input type="text" placeholder="Search">
+            <img src="icons/icons8-search.svg" alt="">
+        </div>
+        <button><a href="./home.html" target="_blank">Home</a></button>
+        <button><a href="./login.html" target="_blank">Login</a></button>
+        <button><a href="./signup.html">Sign Up</a></button>
+    </div>
+    <div class="main">
+        <div class="form">
+            <form onsubmit="signUp(event)">
+                <div>
+                    <label>Name</label>
+                    <input type="text" placeholder="Name" id="name">
+                </div>
+                <br>
+                <div>
+                    <label>Contact No.</label>
+                    <input type="number" placeholder="Mobile Number" id="contact">
+
+                </div>
+                <br>
+                <div>
+                    <label>Email</label>
+                    <input type="text" placeholder="Email address" id="email">
+
+                </div>
+                <br>
+                <div>
+                    <label>Password</label>
+                    <input type="text" placeholder="Password" id="password">
+                </div>
+                <div class="btn">
+                    <button>Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        let objArray = []
+        function signUp(e) {
+            e.preventDefault();
+            let nameEl = document.getElementById("name");
+            let mobileNo = document.getElementById("contact");
+            let emailId = document.getElementById("email");
+            let pass = document.getElementById("password");
+            if (nameEl.value !== "" && mobileNo.value !== "" && emailId.value !== "" && pass.value !== "") {
+                let obj = {
+                    name: nameEl.value,
+                    phoneNo: mobileNo.value,
+                    email: emailId.value,
+                    password: pass.value,
+                }
+                objArray.push(obj);
+                console.log(objArray)
+                let jsonObj = JSON.stringify(objArray)
+                console.log(jsonObj)
+                window.localStorage.setItem("myObj", jsonObj);
+            }
+            else {
+                alert("Please fill all the details")
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <title>Log In</title>
+    <style>
+        * {
+            margin: 0%;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body {
+            box-sizing: border-box;
+            font-family: Poppins;
+        }
+
+        form {
+            width: 470px;
+            padding: 20px;
+            margin: 60px;
+            background-color: rgba(0, 0, 0, 0);
+            box-shadow: 0px 10px 30px 10px rgba(51, 51, 51, 0.198);
+        }
+
+        form>div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        form>div>input {
+            width: 300px;
+            height: 30px;
+            font-size: 17px;
+            padding: 10px;
+            border-radius: 12px;
+            color: rgba(0, 0, 0, 0.883);
+        }
+
+        .btn {
+            align-items: center;
+            justify-content: center;
+            margin: 16px;
+        }
+
+        .btn>button {
+            background-color: cornflowerblue;
+            color: cornsilk;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Silver Flick</h1>
+        <div class="searchbox">
+            <input type="text" placeholder="Search">
+            <img src="icons/icons8-search.svg" alt="">
+        </div>
+        <button><a href="./home.html" target="_blank">Home</a></button>
+        <button><a href="./login.html">Login</a></button>
+        <button><a href="./signup.html" target="_blank">Sign Up</a></button>
+    </div>
+    <div class="main">
+        <div class="form">
+            <form onsubmit="signUp(event)">
+                <div>
+                    <label>Email</label>
+                    <input type="text" placeholder="Email" id="email">
+                </div>
+                <br>
+                <div>
+                    <label>Password</label>
+                    <input type="text" placeholder="Password" id="password">
+                </div>
+                <div class="btn">
+                    <button>Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        let objArr = JSON.parse(window.localStorage.getItem("myObj"));
+        console.log(objArr)
+
+        let emailId = document.getElementById("email");
+        let pass = document.getElementById("password");
+
+        function signUp(e) {
+          e.preventDefault();
+           if (emailId.value === "" && pass.value === "") {
+               alert("Invalid Credentials");
+           }
+           else{
+               window.location.pathname = "home.html"
+           }
+
+        }
+    </script>
+</body>
+
+</html>
